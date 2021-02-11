@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HelloWorld msg="I quit my job to travel nomadically"/>
+    <HelloWorld msg="Vue Workshop"/>
     <HelloWorld msg="Another message"/>
   </div>
 </template>
