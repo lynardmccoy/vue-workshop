@@ -13,7 +13,23 @@
       <button @click="greet">Do something.</button>
     </p>
     <p>
-      <img src="../assets/logo.png" v-show="showSecretImage" />
+      <img src="../assets/logo.png" v-show="showSecretImage"/>
+    </p>
+    <h3>You have fruit</h3>
+    <ul>
+      <li v-bind:class="{'my-class': fruit === 'mangoes'}" v-for="fruit in fruits" v-bind:key="fruit">{{ fruit }}</li>
+    </ul>
+    <p>
+      <input v-model="fruitName" />
+    </p>
+    <p>
+      <ips-button variant="danger" @click="addFruit">Add fruit.</ips-button>
+    </p>
+    <p>
+      <ips-editor></ips-editor>
+    </p>
+    <p>
+      <ips-tel-input></ips-tel-input>
     </p>
   </div>
 </template>
@@ -27,6 +43,8 @@ export default {
   data() {
     return {
       greetingText: "hi",
+      fruits: ["apples", "oranges"],
+      fruitName: "",
     }
   },
   methods: {
@@ -35,6 +53,9 @@ export default {
     },
     writeToConsole() {
       console.info(this.greetingText);
+    },
+    addFruit() {
+      this.fruits.push(this.fruitName);
     }
   },
   computed: {
@@ -51,14 +72,24 @@ h3 {
   margin: 40px 0 0;
 }
 ul {
-  list-style-type: none;
+/*  list-style-type: square;*/
+  list-style-position: inside;
   padding: 0;
 }
 li {
-  display: inline-block;
+  display: /*inline-block*/list-item;
   margin: 0 10px;
 }
 a {
   color: #42b983;
 }
+.my-class {
+  color: green;
+}
+</style>
+<style>
+  .ck.ck-editor {
+    width: 50%;
+    font-family: monospace;
+  }
 </style>
